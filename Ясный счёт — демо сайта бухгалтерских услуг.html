@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ясный счёт — бухгалтерские услуги для ИП и ООО</title>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5f7;--surf:#fff;--ink:#12263a;--mut:#5a6b7b;--line:#d8e0e6;--acc:#0e7c66;--acc-ink:#fff;--sig:#f0a500;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a26;--surf:#16263a;--ink:#e8eef3;--mut:#9fb0be;--line:#2a3d52;--acc:#35c4a0;--acc-ink:#07261e}}
+:root[data-theme="dark"]{--bg:#0e1a26;--surf:#16263a;--ink:#e8eef3;--mut:#9fb0be;--line:#2a3d52;--acc:#35c4a0;--acc-ink:#07261e}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Golos Text",system-ui,sans-serif}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.01em}
+.logo i{display:inline-block;width:12px;height:12px;background:var(--acc);margin-right:8px;border-radius:3px}
+nav a{color:var(--mut);text-decoration:none;margin-left:22px;font-size:15px}
+nav a:hover,.tel{color:var(--ink)}
+.tel{font-weight:700;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--sig);outline-offset:2px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start;padding:36px 0 64px}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.08;letter-spacing:-.025em;font-weight:800;margin:0 0 18px}
+.lead{color:var(--mut);max-width:48ch;margin:0 0 24px}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin:0;padding:0;list-style:none;font-size:15px;color:var(--mut)}
+.facts b{display:block;color:var(--ink);font-size:22px;font-weight:800}
+.calc{background:var(--surf);border:2px solid var(--ink);border-radius:6px;padding:24px;box-shadow:8px 8px 0 var(--acc)}
+.calc h2{font-size:20px;margin:0 0 16px}
+label{display:block;font-size:14px;color:var(--mut);margin:14px 0 6px}
+select,input[type=text],input[type=tel]{width:100%;font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.rv{float:right;color:var(--ink);font-weight:700}
+.price{margin:20px 0 4px;font-size:15px;color:var(--mut)}
+.price b{display:block;font-size:38px;line-height:1.1;color:var(--ink);letter-spacing:-.02em}
+.btn{display:inline-block;width:100%;margin-top:14px;padding:14px 18px;background:var(--acc);color:var(--acc-ink);font:700 17px "Golos Text",sans-serif;border:0;border-radius:4px;cursor:pointer;text-align:center;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(26px,3.5vw,36px);letter-spacing:-.02em;margin:0 0 28px;line-height:1.15}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surf)}
+.svc div{padding:22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 -1px -1px 0}
+.svc h3{margin:0 0 6px;font-size:18px}.svc p{margin:0 0 10px;color:var(--mut);font-size:15px}
+.svc span{font-weight:700;color:var(--acc)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);font-weight:800;font-size:28px;color:var(--acc)}
+.steps b{display:block}.steps span{color:var(--mut);font-size:15px}
+.cal{background:var(--surf);border-left:6px solid var(--sig);padding:18px 22px;border-radius:0 6px 6px 0;margin-bottom:28px}
+.cal b{font-size:18px}.cal p{margin:6px 0 0;color:var(--mut);font-size:15px}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:700;font-size:18px}
+details p{color:var(--mut);margin:10px 0 0;max-width:62ch}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.ok{display:none;padding:14px;border-left:6px solid var(--acc);background:var(--surf);margin-top:14px}
+footer{padding:32px 0 48px;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
+@media (max-width:820px){.hero,.contact{grid-template-columns:1fr}nav{display:none}}
+</style>
+</head>
+<body>
+<div class="w">
+<header>
+  <div class="logo"><i></i>Ясный счёт</div>
+  <nav><a href="#uslugi">Услуги</a><a href="#kak">Как работаем</a><a href="#voprosy">Вопросы</a></nav>
+  <a class="tel" href="tel:+70000000000">+7 (000) 000-00-00</a>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Бухгалтерия для ИП и ООО без штрафов и сюрпризов от налоговой</h1>
+    <p class="lead">Ведём учёт, сдаём отчётность и считаем налоги. Вы получаете понятный отчёт каждый месяц и ответ на вопрос в течение рабочего дня.</p>
+    <ul class="facts">
+      <li><b>от 2 500 ₽</b>в месяц за ИП</li>
+      <li><b>0 ₽</b>за первичный аудит учёта</li>
+      <li><b>100%</b>ответственность по договору</li>
+    </ul>
+  </div>
+  <div class="calc" id="calc">
+    <h2>Рассчитайте стоимость за минуту</h2>
+    <label for="f">Форма бизнеса</label>
+    <select id="f"><option value="2500">ИП</option><option value="5500">ООО</option></select>
+    <label for="s">Система налогообложения</label>
+    <select id="s"><option value="0">УСН «Доходы»</option><option value="1500">УСН «Доходы минус расходы»</option><option value="4500">ОСНО</option></select>
+    <label for="o">Операций в месяц <span class="rv" id="ov">30</span></label>
+    <input type="range" id="o" min="10" max="300" step="10" value="30">
+    <label for="e">Сотрудников <span class="rv" id="ev">0</span></label>
+    <input type="range" id="e" min="0" max="30" step="1" value="0">
+    <div class="price">Ориентировочная стоимость<b id="p">2 500 ₽ / мес</b></div>
+    <a class="btn" href="#zayavka">Получить точный расчёт</a>
+  </div>
+</div>
+</div>
+
+<section id="uslugi"><div class="w">
+  <h2 class="t">Что входит в обслуживание</h2>
+  <div class="svc">
+    <div><h3>Ведение учёта</h3><p>Первичные документы, банк, касса, взаиморасчёты с контрагентами.</p><span>от 2 500 ₽/мес</span></div>
+    <div><h3>Отчётность и налоги</h3><p>Декларации, ЕФС-1, уведомления и платежи в срок. Подаём через ЭДО.</p><span>входит в абонемент</span></div>
+    <div><h3>Зарплата и кадры</h3><p>Расчёт зарплаты, отпуска, больничные, кадровые документы.</p><span>от 500 ₽ за сотрудника</span></div>
+    <div><h3>Регистрация бизнеса</h3><p>Открытие ИП или ООО, выбор системы налогообложения, расчётный счёт.</p><span>от 3 000 ₽</span></div>
+    <div><h3>Восстановление учёта</h3><p>Приводим в порядок запущенную бухгалтерию за прошлые периоды.</p><span>после аудита</span></div>
+    <div><h3>Консультации</h3><p>Налоговая оптимизация, проверки, ответы на требования ФНС.</p><span>от 1 500 ₽/час</span></div>
+  </div>
+</div></section>
+
+<section id="kak"><div class="w">
+  <h2 class="t">Как мы начинаем работать</h2>
+  <div class="cal"><b>Ближайший срок: 28 числа</b><p>Мы напомним о каждом платеже и подготовим документы заранее. Вам остаётся нажать «Оплатить».</p></div>
+  <ol class="steps">
+    <li><div><b>Оставляете заявку</b><span>Перезваниваем в течение 15 минут в рабочее время.</span></div></li>
+    <li><div><b>Бесплатный аудит</b><span>Смотрим текущий учёт и называем точную цену в договоре.</span></div></li>
+    <li><div><b>Подписываем договор</b><span>Фиксируем стоимость и ответственность за ошибки.</span></div></li>
+    <li><div><b>Передаём документы</b><span>Через Telegram или ЭДО. Дальше мы всё делаем сами.</span></div></li>
+  </ol>
+</div></section>
+
+<section id="voprosy"><div class="w">
+  <h2 class="t">Частые вопросы</h2>
+  <details><summary>Можно ли перейти к вам от другого бухгалтера?</summary><p>Да. Принимаем дела в середине года, сверяем остатки и берём на себя общение с налоговой.</p></details>
+  <details><summary>Что будет, если вы допустите ошибку?</summary><p>Штрафы и пени, возникшие по нашей вине, мы оплачиваем. Это прописано в договоре.</p></details>
+  <details><summary>Нужно ли приезжать в офис?</summary><p>Нет. Документы передаются онлайн, подписание тоже.</p></details>
+  <details><summary>Работаете ли вы с маркетплейсами?</summary><p>Да, ведём учёт продавцов Wildberries и Ozon, сверяем отчёты о реализации.</p></details>
+</div></section>
+
+<section id="zayavka"><div class="w contact">
+  <div>
+    <h2 class="t">Узнайте цену для вашего бизнеса</h2>
+    <p class="lead">Оставьте телефон. Мы позвоним, зададим три вопроса и назовём стоимость.</p>
+  </div>
+  <div>
+    <label for="n">Как к вам обращаться</label>
+    <input type="text" id="n" autocomplete="name">
+    <label for="t">Телефон</label>
+    <input type="tel" id="t" autocomplete="tel" placeholder="+7">
+    <button class="btn" type="button" id="send">Отправить заявку</button>
+    <div class="ok" id="ok" role="status">Заявка отправлена. Мы перезвоним в течение 15 минут в рабочее время.</div>
+  </div>
+</div></section>
+
+<footer><div class="w">© 2026 «Ясный счёт». Демонстрационная версия сайта. Название, цены и контакты условные.</div></footer>
+
+<script>
+(function(){
+  var f=document.getElementById('f'),s=document.getElementById('s'),o=document.getElementById('o'),e=document.getElementById('e');
+  function fmt(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'\u00a0')}
+  function calc(){
+    var ops=+o.value,emp=+e.value;
+    var extra=Math.max(0,ops-30)/10*150;
+    var total=+f.value+ +s.value+extra+emp*500;
+    document.getElementById('ov').textContent=ops;
+    document.getElementById('ev').textContent=emp;
+    document.getElementById('p').textContent='от\u00a0'+fmt(Math.round(total/100)*100)+'\u00a0₽\u00a0/\u00a0мес';
+  }
+  [f,s,o,e].forEach(function(x){x.addEventListener('input',calc)});calc();
+  document.getElementById('send').addEventListener('click',function(){
+    var t=document.getElementById('t').value.replace(/\D/g,'');
+    var ok=document.getElementById('ok');
+    if(t.length<10){ok.style.display='block';ok.textContent='Введите телефон полностью, например +7 900 000-00-00.';return}
+    ok.style.display='block';ok.textContent='Заявка отправлена. Мы перезвоним в течение 15 минут в рабочее время.';
+  });
+})();
+</script>
+</body>
+</html>
